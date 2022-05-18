@@ -1,4 +1,9 @@
-all : up
+all :	up
+		sudo mkdir -p /home/adidion/data
+		sudo mkdir -p /home/adidion/data/database
+		sudo mkdir -p /home/adidion/data/wordpress
+		sudo chmod 755 /etc/hosts
+		sudo echo "127.0.0.1 adidion.42.fr" >> /etc/hosts
 up :
 	docker-compose -f srcs/docker-compose.yml up --build
 stop :
