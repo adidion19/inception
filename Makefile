@@ -1,7 +1,7 @@
 all :	up
 		sudo mkdir -p /home/adidion/data
-		sudo mkdir -p /home/adidion/data/database
-		sudo mkdir -p /home/adidion/data/wordpress
+		sudo mkdir -p /home/adidion/data/db_volume
+		sudo mkdir -p /home/adidion/data/php_nginx_volume
 		sudo chmod 755 /etc/hosts
 		sudo echo "127.0.0.1 adidion.42.fr" >> /etc/hosts
 up :

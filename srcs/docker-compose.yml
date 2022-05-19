@@ -1,0 +1,62 @@
+version: "3.7"
+networks:
+  my_network:
+services:
+  mariadb:
+    container_name: maria_db
+    init: true
+    build:
+      context: ./requirements/mariadb
+    volumes:
+      - "db_volume:/var/lib/mysql"
+    restart: always
+    networks:
+      - my-network
+    env_file:
+      - .env
+  wordpress:
+    container_name: wordpress
+    init: true
+    build:
+      context: ./requirements/wordpress
+    volumes:
+      - "php_nginx_volume:/var/www/html/"
+    restart: always
+    networks:
+      - my-network
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+  nginx:
+    container_name: nginx
+    init: true
+    build:
+      context: ./requirements/nginx
+    volumes:
+      - "php_nginx_volume:/var/www/html/"
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+      - mariadb
+    env_file:
+      - .env
+
+
+volumes:
+  db_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/adidion/data/db_volume
+  php_nginx_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/adidion/data/php_nginx_volume
