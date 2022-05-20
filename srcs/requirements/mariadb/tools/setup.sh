@@ -1,3 +1,5 @@
+chown -R mysql:mysql /var/lib/mysql/
+chmod 777 /var/lib/mysql/
 if [ ! -d "/var/lib/mysql/wordpress"]; then
 mysql_install_db
 service mysql start
