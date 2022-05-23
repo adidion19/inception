@@ -20,7 +20,7 @@ services:
     build:
       context: ./requirements/wordpress
     volumes:
-      - "php_nginx_volume:/var/www/php_nginx_volume/"
+      - "php_nginx_volume:/var/www/html/"
     restart: always
     networks:
       - my-network
@@ -35,7 +35,7 @@ services:
     build:
       context: ./requirements/nginx
     volumes:
-      - "php_nginx_volume:/var/www/php_nginx_volume/"
+      - "php_nginx_volume:/var/www/html/"
     restart: always
     networks:
       - my-network
