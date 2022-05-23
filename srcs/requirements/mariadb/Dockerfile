@@ -6,15 +6,16 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/05/23 10:52:08 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/23 10:59:37 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 RUN apt-get upgrade
 RUN apt-get update
-RUN apt-get install --yes mariadb-server
-RUN apt-get install --yes mariadb-client-core-10.6
+RUN apt-get install --yes mariadb-server mariadb mariadb-client vim
+RUN mkdir -p /var/lib/mysqld /run/mysqld
+RUN mariadb-install-db --datadir=/var/lib/mysql --auth-root-autentification-method=normal
 COPY tools/setup.sh .
 COPY ./tools/my.cnf /etc/mysql
 COPY ./tools/setup.sh .
