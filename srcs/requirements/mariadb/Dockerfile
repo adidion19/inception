@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/05/23 15:38:24 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/23 15:40:59 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RUN mkdir -p /var/lib/mysqld /run/mysqld
 #RUN mariadb-install-db --datadir=/etc/mysql --auth-root-authentication-method=normal
 COPY ./tools/my.cnf /etc/mysql
 COPY ./tools/setup.sh /
-RUN chown -R mysql:mysql /ect/mysql
-RUN chown -R mysql:mysql /run/mysqld
+# RUN chown -R mysql:mysql /ect/mysql
+# RUN chown -R mysql:mysql /run/mysqld
 EXPOSE 3306
 CMD /setup.sh
