@@ -1,7 +1,7 @@
-sudo chown -R mysql:mysql /var/lib/mysql/
-sudo chmod 777 /var/lib/mysql/
-sudo chown -R mysql /var/run/mysqld
-sudo /etc/init.d/mysql restart
+chown -R mysql:mysql /var/lib/mysql/
+chmod 777 /var/lib/mysql/
+chown -R mysql /var/run/mysqld
+/etc/init.d/mysql restart
 if [ ! -d "/var/lib/mysql/wordpress" ]; then 
 
 	mysql_install_db
