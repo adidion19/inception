@@ -6,14 +6,14 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/05/24 14:20:42 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/24 14:21:57 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM debian:buster
 RUN apt-get upgrade
 RUN apt-get update
-RUN apt-get install --yes mariadb vim mariadb-client
+RUN apt-get install --yes mariadb-client-core-10.6 vim mariadb-client
 RUN mkdir -p /var/lib/mysqld /run/mysqld
 COPY ./tools/database.sql /tmp/create_db.sql
 COPY ./tools/setup.sh ./
