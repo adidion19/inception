@@ -2,6 +2,7 @@ version: "3.7"
 services:
 
   mariadb:
+    image: img_mariadb
     container_name: maria_db
     init: true
     build:
@@ -18,6 +19,7 @@ services:
       - MARIADB_PWD=${MARIADB_PWD}
 
   wordpress:
+    image: img_wordpress
     container_name: wordpress
     init: true
     build:
@@ -45,6 +47,7 @@ services:
       - mariadb
 
   nginx:
+    image: img_nginx
     container_name: nginx
     init: true
     build:
