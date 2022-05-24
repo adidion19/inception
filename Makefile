@@ -5,7 +5,7 @@ all :	build
 		sudo chmod 755 /etc/hosts
 		sudo echo "127.0.0.1 adidion.42.fr" >> /etc/hosts
 		sudo apt-get install -y mysql-server
-		cd srcs && sudo docker-compose up -d
+		sudo docker-compose up -d
 build :
 	cd srcs && sudo docker-compose build
 stop :
