@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/24 16:20:56 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/24 16:23:21 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RUN apt-get install --yes curl bash vim mariadb-client php-json php-curl php-fpm
 RUN mkdir -p /var/www/wordpress
 RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /usr/bin/wp
 RUN chmod +x ./usr/bin/wp
-RUN sudo wp core download --path=/var/www/wordpress
+RUN wp core download --path=/var/www/html
 WORKDIR /var/www/wordpress
 COPY config/config /config/wp-config
 COPY ./scripts/script.sh /tmp/entrypoint.sh
