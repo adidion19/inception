@@ -6,14 +6,24 @@ define('DB_PASSWORD', getenv('MARIADB_PWD'));
 define('DB_HOST', getenv('MARIADB_HOST'));
 define('DB_CHARSET', 'utf8' );
 define('DB_COLLATE', '');
-// define('AUTH_KEY', 'a7D>mN+j~IF{MSWg/aF1/5+!>/tax/4V}{fnk*Z4>p!6LW+vRGOaP0&GX]i-`7nB');
-// define('SECURE_AUTH_KEY', 'iKEdqL0#SL/Ao618=ZD,W%Ogu0s(zpN?nLB~Q@d-Cd7fK|Sqd%!8UT,>9+ D5wgY');
-// define('LOGGED_IN_KEY', 'aMlu9G=Y-D,dk}?9g}2CS(O$a@F~eB^+Peq)WXYYrIGr|uXb^]rKQJT[&jS<S4;E');
-// define('NONCE_KEY', '`Q{fVW_,vNEyGeaijR3a35-^@F>S^a/(R-|<O!6>lRM`@XVa@+Ig>d=r!pY&GO5|');
-// define('AUTH_SALT', '1i%SIOPS[%H^o7ku3%z>%(I>T: ~N*#&KE{s($]2.|->SE1e/ICC8$`aE<F+Y;kK');
-// define('SECURE_AUTH_SALT', '22@6,} Y-Ul@;~z*#{8g+{1gm4aB+ wQws*ky3Gpgi/E{:5!f_yJ?PEtBcNKJX)v');
-// define('LOGGED_IN_SALT', 'iQ0&>`$]A9pR[lKi &55?{T@-^g},e(kkuV]{uPaTk;U2r!r6v]o-DLnfeg-TKAG');
-// define('NONCE_SALT', '9QC%D_ !h~+c614K#*c-~yKtrru^=r;#k0mC]m&?[s@c;Z2rJ!Q|K%[xC,1:=&Wq');
+/**#@+
+ * Authentication unique keys and salts.
+ *
+ * Change these to different unique phrases! You can generate these using
+ * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+ *
+ * You can change these at any point in time to invalidate all existing cookies.
+ * This will force all users to have to log in again.
+ *
+ */
+define('AUTH_KEY', 'GKj9wuj#Q9X~FqS3&8GiK(CK.9_,.<~{*-H|o4LN!DHswt;Gh2S?s ++*(yI3p[[');
+	define('SECURE_AUTH_KEY', 'dEr%K4}1b/K0GTJ7v6#wCVm6}sbM|Kd|B+Ycg&MnC]>M7Fk<y:fAG-wT0V[|?.Qd');
+	define('LOGGED_IN_KEY', 'ih1vqO+!cBDMSmcM`$_j=xc-J!{,O(- >r9UEJsK*t9rs|l&.C>>s,_+S-?o(pFv');
+	define('NONCE_KEY', 'R.Gt}q]CtpGAW!6pK/1lPG|Wum2Mv>$+-7cQ7IGpvqr%52~s,)+-}_,]#mo+-g]d');
+	define('AUTH_SALT', 'Au)P>;0ff3tT3XCRXqe$%~uJ`JTlIu9:?F|E-,4qRVN^(uAW||M|#O;jH5*J6&8f');
+	define('SECURE_AUTH_SALT', '+!e(Nh^BR9zS~kUE<$}f4wh=*P^o[sT@6aauIZo9Y%eE-7bs:xrixkcY_[i/J^(*');
+	define('LOGGED_IN_SALT', 'G<A8.@AaXJ%9]_N|*qW]r@nLjUTM8*L]W~K3{=@2hV0T?i.DVp70L7E7%aaX2s]!');
+	define('NONCE_SALT', '#@Lp;/e|?P,.Jq.CDZ%P]sC(Nk^?Gp%rp!J)@$nzZ&lP|w2;^iU~~?y:ugm!VSTa');
 $table_prefix = 'wp_';
 define( 'WP_DEBUG', false);
 if (!defined('ABSPATH'))
