@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/05/23 18:06:07 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/24 10:30:30 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ RUN apt-get upgrade
 RUN apt-get update
 RUN apt-get install --yes mariadb-server vim mariadb-client
 RUN mkdir -p /var/lib/mysqld /run/mysqld
-#RUN mariadb-install-db --datadir=/etc/mysql --auth-root-authentication-method=normal
-COPY ./tools/setup.sh /
-COPY ./tools/my.cnf /etc/mysql
-# RUN chown -R mysql:mysql /ect/mysql
-# RUN chown -R mysql:mysql /run/mysqld
+COPY ./tools/database.sql /tmp/create_db.sql
+COPY ./tools/setup.sh ./
+COPY ./tools/my.cnf /etc/my.cnf.d/
+RUN chmod +x ./setup.sh
+RUN mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal
+RUN chown -R mysql:mysql /ect/mysql
+RUN chown -R mysql:mysql /run/mysqld
 EXPOSE 3306
 CMD /setup.sh

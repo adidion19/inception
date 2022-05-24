@@ -7,12 +7,15 @@ services:
     build:
       context: ./requirements/mariadb
     volumes:
-      - "db_volume:/var/lib/mysql"
+      - "mariadb_volume:/var/lib/mysql"
     restart: always
     networks:
       - my-network
     env_file:
-      - .env
+      - MARIADB_ROOT_PWD=${MARIADB_ROOT_PWD}
+      - MARIADB_DB=${MARIADB_DB}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PWD=${MARIADB_PWD}
 
   wordpress:
     container_name: wordpress
@@ -20,12 +23,24 @@ services:
     build:
       context: ./requirements/wordpress
     volumes:
-      - "php_nginx_volume:/var/www/html/"
+      - "wordpress_volume:/var/www/wordpress/"
     restart: always
     networks:
       - my-network
     env_file:
-      - .env
+      - WP_URL=${WP_URL}
+      - WP_DATABASE=${WP_DATABASE}
+      - WP_TITLE=${WP_TITLE}
+      - WP_ADMIN_USER=${WP_ADMIN_USER}
+      - WP_ADMIN_PWD=${WP_ADMIN_PWD}
+      - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+      - WP_USER=${WP_USER}
+      - WP_USER_PWD=${WP_USER_PWD}
+      - WP_USER_EMAIL=${WP_USER_EMAIL}
+      - MARIADB_HOST=${MARIADB_HOST}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PWD=${MARIADB_PWD}
+      - MARIADB_DB=${MARIADB_DB}
     depends_on:
       - mariadb
 
@@ -35,7 +50,7 @@ services:
     build:
       context: ./requirements/nginx
     volumes:
-      - "php_nginx_volume:/var/www/html/"
+      - "wordpress_volume:/var/www/wordpress/"
     restart: always
     networks:
       - my-network
@@ -44,22 +59,20 @@ services:
     depends_on:
       - wordpress
       - mariadb
-    env_file:
-      - .env
 
 networks:
   my-network:
 
 volumes:
-  db_volume:
+  mariadb_volume:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/adidion/data/db_volume
-  php_nginx_volume:
+      device: /home/adidion/data/databse
+  wordpress_volume:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/adidion/data/php_nginx_volume
+      device: /home/adidion/data/wordpress
