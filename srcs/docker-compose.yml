@@ -1,6 +1,20 @@
 version: "3.7"
 services:
 
+    nginx:
+    image: img_nginx
+    container_name: nginx
+    init: true
+    build:
+      context: ./requirements/nginx
+    volumes:
+      - "wordpress_volume:/var/www/wordpress/"
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - "443:443"
+
   mariadb:
     image: img_mariadb
     container_name: maria_db
@@ -44,23 +58,6 @@ services:
       - MARIADB_PWD=${MARIADB_PWD}
       - MARIADB_DB=${MARIADB_DB}
     depends_on:
-      - mariadb
-
-  nginx:
-    image: img_nginx
-    container_name: nginx
-    init: true
-    build:
-      context: ./requirements/nginx
-    volumes:
-      - "wordpress_volume:/var/www/wordpress/"
-    restart: always
-    networks:
-      - my-network
-    ports:
-      - "443:443"
-    depends_on:
-      - wordpress
       - mariadb
 
 networks:
