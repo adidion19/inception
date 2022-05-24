@@ -1,6 +1,5 @@
 version: "3.7"
 services:
-
   nginx:
     image: img_nginx
     container_name: nginx
@@ -8,7 +7,7 @@ services:
     build:
       context: ./requirements/nginx
     volumes:
-      - "wordpress_volume:/var/www/html/"
+      - "wordpress_volume:/var/www/wordpress/"
     restart: always
     networks:
       - my-network
@@ -39,7 +38,7 @@ services:
     build:
       context: ./requirements/wordpress
     volumes:
-      - "wordpress_volume:/var/www/html/"
+      - "wordpress_volume:/var/www/wordpress/"
     restart: always
     networks:
       - my-network
