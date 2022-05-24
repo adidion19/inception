@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/24 16:24:19 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/24 16:24:57 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ RUN apt-get upgrade
 RUN apt-get update
 RUN apt-get install --yes curl bash vim mariadb-client php-json php-curl php-fpm php-phar php-mysqli php-iconv php
 RUN mkdir -p /var/www/wordpress
-CMD sleep 5
+RUN sleep 5
 RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /usr/bin/wp
 RUN chmod +x ./usr/bin/wp
 RUN wp core download --path=/var/www/html
