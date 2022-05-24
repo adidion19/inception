@@ -66,12 +66,12 @@ volumes:
   mariadb_volume:
     driver: local
     driver_opts:
+      device: /home/adidion/data/databse
       type: volume
       o: bind
-      device: /home/adidion/data/databse
   wordpress_volume:
     driver: local
     driver_opts:
+      device: /home/adidion/data/wordpress
       type: volume
       o: bind
-      device: /home/adidion/data/wordpress
