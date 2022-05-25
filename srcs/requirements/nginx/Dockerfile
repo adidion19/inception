@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 15:07:08 by adidion           #+#    #+#              #
-#    Updated: 2022/05/25 15:52:07 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/25 15:53:39 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,6 @@ RUN openssl req -x509 -nodes \
 	-subj "/C=BE/ST=Belgium/L=Brussels/O=42/OU=19/CN=adidion"\
 	-keyout /etc/nginx/ssl/adidion.42.fr.key -out /etc/nginx/ssl/adidion.42.fr.crt;
 RUN mkdir -p /var/run/nginx
-COPY tools/nginx.conf /etc/nginx/sites-enabled/
+COPY tools/nginx.conf /etc/nginx/http.d/default.conf
 EXPOSE 443
 CMD nginx -g "daemon off;"
