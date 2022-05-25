@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/25 16:24:55 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/25 16:26:01 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x ./usr/bin/wp
 RUN wp core download --path=/var/www/wordpress --allow-root
 WORKDIR /var/www/wordpress
-COPY tools/wp-config /etc/nginx/sites-enabled
+COPY tools/wp-config /etc/nginx
 COPY ./tools/script.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
 #EXPOSE 9000
