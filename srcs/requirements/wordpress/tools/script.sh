@@ -1,4 +1,4 @@
-target="/etc/php7/php-fpm.d/www.conf"
+target="/etc/php/8.1/fpm/pool.d/www.conf"
 if [ $? -eq 0 ]; then
 	sed -i "s|.*listen = 127.0.0.1.*|listen = 9000|g" $target
 	echo "env[MARIADB_HOST] = \$MARIADB_HOST" >> $target
