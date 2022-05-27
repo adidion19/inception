@@ -1,28 +1,42 @@
 version: "3.7"
+volumes:
+  mariadb_volume:
+    driver: local
+    driver_opts:
+      device: /home/adidion/data/database
+      type: volume
+      o: bind
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      device: /home/adidion/data/wordpress
+      type: volume
+      o: bind
+
+networks:
+  my-network:
+
 services:
   nginx:
-    image: img_nginx
     container_name: nginx
-    init: true
     build:
       context: ./requirements/nginx
+    image: img_nginx
     volumes:
       - "wordpress_volume:/var/www/wordpress/"
-    restart: always
     networks:
       - my-network
     ports:
       - "443:443"
+    restart: always
 
   mariadb:
-    image: img_mariadb
     container_name: mariadb
-    init: true
     build:
       context: ./requirements/mariadb
+    image: img_mariadb
     volumes:
       - "mariadb_volume:/var/lib/mysql"
-    restart: always
     networks:
       - my-network
     environment:
@@ -30,16 +44,17 @@ services:
       - MARIADB_DB=${MARIADB_DB}
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PWD=${MARIADB_PWD}
+    restart: always
 
   wordpress:
-    image: img_wordpress
     container_name: wordpress
-    init: true
+    depends_on:
+      - mariadb
     build:
       context: ./requirements/wordpress
+    image: img_wordpress
     volumes:
       - "wordpress_volume:/var/www/wordpress/"
-    restart: always
     networks:
       - my-network
     environment:
@@ -56,22 +71,4 @@ services:
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PWD=${MARIADB_PWD}
       - MARIADB_DB=${MARIADB_DB}
-    depends_on:
-      - mariadb
-
-networks:
-  my-network:
-
-volumes:
-  mariadb_volume:
-    driver: local
-    driver_opts:
-      device: /home/adidion/data/database
-      type: volume
-      o: bind
-  wordpress_volume:
-    driver: local
-    driver_opts:
-      device: /home/adidion/data/wordpress
-      type: volume
-      o: bind
+    restart: always
