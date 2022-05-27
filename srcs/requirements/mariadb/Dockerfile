@@ -6,12 +6,11 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/05/27 13:03:04 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/27 14:44:36 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.14
-RUN apk upgrade
 RUN apk update
 RUN apk add --update --no-cache --quiet vim mariadb-client mariadb
 RUN mkdir -p /var/lib/mysqld /run/mysqld

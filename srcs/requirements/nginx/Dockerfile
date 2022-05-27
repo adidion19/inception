@@ -6,12 +6,11 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 15:07:08 by adidion           #+#    #+#              #
-#    Updated: 2022/05/27 14:33:57 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/27 14:44:40 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.14
-RUN apk upgrade
 RUN apk update
 RUN apk add --quiet --update --no-cache nginx
 RUN apk add --quiet --update --no-cache openssl
