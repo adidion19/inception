@@ -5,6 +5,7 @@ if [ $? -eq 0 ]; then
 	echo "env[MARIADB_USER] = \$MARIADB_USER" >> $target
 	echo "env[MARIADB_PWD] = \$MARIADB_PWD" >> $target
 	echo "env[MARIADB_DB] = \$MARIADB_DB" >> $target
+	echo "test"
 fi
 if [ ! -f "wp-config.php" ]; then
 	cp /tools/wp-config ./wp-config.php
