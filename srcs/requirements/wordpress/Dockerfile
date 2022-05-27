@@ -6,18 +6,18 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/27 11:27:50 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/27 12:54:32 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM debian:buster
-RUN apt-get upgrade
-RUN apt-get update
-RUN apt-get install --yes curl bash vim mariadb-client php-json php-curl php-fpm php-phar php-mysqli php-iconv php wordpress
+FROM alpine:3.14
+RUN apk upgrade
+RUN apk update
+RUN apk install --quiet --update --no-cache bash vim mariadb-client php7 php-phar php-json php-curl php-fpm php-mysqli php-iconv
 RUN mkdir -p /var/www/wordpress
 RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /usr/bin/wp
 RUN chmod +x ./usr/bin/wp
-RUN wp core download --path=/var/www/wordpress --allow-root
+RUN wp core download --path=/var/www/wordpress
 WORKDIR /var/www/wordpress
 COPY tools/wp-config /config/wp-config
 COPY ./tools/entrypoint.sh /tmp/entrypoint.sh
