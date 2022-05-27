@@ -21,5 +21,6 @@ RUN chmod +x ./entrypoint.sh
 RUN mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal
 RUN chown -R mysql:mysql /var/lib/mysql
 RUN chown -R mysql:mysql /run/mysqld
+RUN chown -R mysql:mysql /etc/host
 #EXPOSE 3306
 ENTRYPOINT [ "sh", "entrypoint.sh" ]
