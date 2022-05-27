@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/27 10:44:26 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/27 11:27:50 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,4 +23,4 @@ COPY tools/wp-config /config/wp-config
 COPY ./tools/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
 #EXPOSE 9000
-ENTRYPOINT sh /tmp/entrypoint.sh
+ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]
