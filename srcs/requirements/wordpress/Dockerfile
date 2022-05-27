@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:18:39 by adidion           #+#    #+#              #
-#    Updated: 2022/05/27 10:12:05 by adidion          ###   ########.fr        #
+#    Updated: 2022/05/27 10:44:26 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RUN chmod +x ./usr/bin/wp
 RUN wp core download --path=/var/www/wordpress --allow-root
 WORKDIR /var/www/wordpress
 COPY tools/wp-config /config/wp-config
-COPY ./tools/script.sh /tmp/entrypoint.sh
+COPY ./tools/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
 #EXPOSE 9000
 ENTRYPOINT sh /tmp/entrypoint.sh
