@@ -2,7 +2,7 @@ all :	build
 		sudo mkdir -p /home/adidion/data
 		sudo mkdir -p /home/adidion/data/wordpress
 		sudo mkdir -p /home/adidion/data/database
-		sudo chmod 755 /etc/hosts
+		sudo chmod 777 /etc/hosts
 		sudo echo "127.0.0.1 adidion.42.fr" > /etc/hosts
 		sudo echo "127.0.0.1 www.adidion.42.fr" >> /etc/hosts
 		sudo apt-get install -y mysql-server
