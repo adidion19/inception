@@ -12,3 +12,4 @@ if [ $? -ne 0 ]; then
 	eval "echo \"$(cat /tmp/create_db.sql)\"" | mariadb
 	touch .setup
 fi
+usr/bin/mysqld_safe --datadir=/var/lib/mysql

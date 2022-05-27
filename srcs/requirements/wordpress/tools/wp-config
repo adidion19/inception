@@ -26,8 +26,7 @@ define('LOGGED_IN_SALT', 'G<A8.@AaXJ%9]_N|*qW]r@nLjUTM8*L]W~K3{=@2hV0T?i.DVp70L7
 define('NONCE_SALT', '#@Lp;/e|?P,.Jq.CDZ%P]sC(Nk^?Gp%rp!J)@$nzZ&lP|w2;^iU~~?y:ugm!VSTa');
 $table_prefix = 'wp_';
 define( 'WP_DEBUG', false);
-if (!defined('ABSPATH'))
-{
+if (!defined('ABSPATH')){
 	define('ABSPATH', __DIR__ . '/');
 }
 require_once ABSPATH . 'wp-settings.php';
