@@ -12,4 +12,10 @@ build :
 stop :
 	docker-compose -f srcs/docker-compose.yml down -v
 clean :
-	docker-compose -f srcs/docker-compose.yml rm
+	cd srcs/ && sudo docker-compose down -v --rmi all --remove-orphans
+fclean	:	clean
+	sudo docker system prune --volumes --all --force
+	sudo rm -rf /home/adidion/data
+	sudo docker network prune --force
+	echo docker volume rm $(docker volume ls -q)
+	sudo docker image prune --force
