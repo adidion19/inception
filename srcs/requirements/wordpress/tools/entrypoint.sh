@@ -1,4 +1,5 @@
 target="/etc/php7/php-fpm.d/www.conf"
+grep -E "listen = 127.0.0.1" $target > /dev/null 2>&1
 if [ $? -eq 0 ]; then
 	sed -i "s|.*listen = 127.0.0.1.*|listen = 9000|g" $target
 	echo "env[MARIADB_HOST] = \$MARIADB_HOST" >> $target
