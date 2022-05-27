@@ -18,8 +18,8 @@ RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x ./usr/bin/wp
 RUN wp core download --path=/var/www/wordpress
 WORKDIR /var/www/wordpress
-COPY tools/wp-config /config/wp-config
+COPY config/wp-config /config/wp-config
 COPY ./tools/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
-EXPOSE 9000
+#EXPOSE 9000
 ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]
