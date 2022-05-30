@@ -4,7 +4,7 @@ all :	build
 		sudo mkdir -p /home/adidion/data/database
 		sudo chmod 777 /etc/hosts
 		sudo echo "127.0.0.1 adidion.42.fr" >> /etc/hosts
-		sudo echo "127.0.0.1 www.adidion.42.fr" >> /etc/hosts
+		sudo echo "127.0.0.1 www.adidion.42.fr" >> /etc/host
 		cd srcs && sudo docker-compose up -d
 build :
 	cd srcs && sudo docker-compose build
