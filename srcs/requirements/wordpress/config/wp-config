@@ -1,23 +1,11 @@
 <?php
 define('WP_CACHE', true);
-
-/** Database **/
-define( 'DB_NAME', getenv('MARIADB_DB') );
-
-/** Database MySQL username */
-define( 'DB_USER', getenv('MARIADB_USER') );
-
-/** MySQL database password */
-define( 'DB_PASSWORD', getenv('MARIADB_PWD') );
-
-/** MySQL hostname */
-define( 'DB_HOST', getenv('MARIADB_HOST'));
-
-/** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
-
-/** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define( 'DB_NAME', getenv('MARIADB_DB'));
+define( 'DB_USER', getenv('MARIADB_USER'));
+define('DB_PASSWORD', getenv('MARIADB_PWD'));
+define('DB_HOST', getenv('MARIADB_HOST'));
+define('DB_CHARSET', 'utf8' );
+define('DB_COLLATE', '');
 /**#@+
  * Authentication unique keys and salts.
  *
@@ -28,22 +16,17 @@ define( 'DB_COLLATE', '' );
  * This will force all users to have to log in again.
  *
  */
-define('AUTH_KEY',         'GKj9wuj#Q9X~FqS3&8GiK(CK.9_,.<~{*-H|o4LN!DHswt;Gh2S?s ++*(yI3p[[');
-define('SECURE_AUTH_KEY',  'dEr%K4}1b/K0GTJ7v6#wCVm6}sbM|Kd|B+Ycg&MnC]>M7Fk<y:fAG-wT0V[|?.Qd');
-define('LOGGED_IN_KEY',    'ih1vqO+!cBDMSmcM`$_j=xc-J!{,O(- >r9UEJsK*t9rs|l&.C>>s,_+S-?o(pFv');
-define('NONCE_KEY',        'R.Gt}q]CtpGAW!6pK/1lPG|Wum2Mv>$+-7cQ7IGpvqr%52~s,)+-}_,]#mo+-g]d');
-define('AUTH_SALT',        'Au)P>;0ff3tT3XCRXqe$%~uJ`JTlIu9:?F|E-,4qRVN^(uAW||M|#O;jH5*J6&8f');
+define('AUTH_KEY', 'GKj9wuj#Q9X~FqS3&8GiK(CK.9_,.<~{*-H|o4LN!DHswt;Gh2S?s ++*(yI3p[[');
+define('SECURE_AUTH_KEY', 'dEr%K4}1b/K0GTJ7v6#wCVm6}sbM|Kd|B+Ycg&MnC]>M7Fk<y:fAG-wT0V[|?.Qd');
+define('LOGGED_IN_KEY', 'ih1vqO+!cBDMSmcM`$_j=xc-J!{,O(- >r9UEJsK*t9rs|l&.C>>s,_+S-?o(pFv');
+define('NONCE_KEY', 'R.Gt}q]CtpGAW!6pK/1lPG|Wum2Mv>$+-7cQ7IGpvqr%52~s,)+-}_,]#mo+-g]d');
+define('AUTH_SALT', 'Au)P>;0ff3tT3XCRXqe$%~uJ`JTlIu9:?F|E-,4qRVN^(uAW||M|#O;jH5*J6&8f');
 define('SECURE_AUTH_SALT', '+!e(Nh^BR9zS~kUE<$}f4wh=*P^o[sT@6aauIZo9Y%eE-7bs:xrixkcY_[i/J^(*');
-define('LOGGED_IN_SALT',   'G<A8.@AaXJ%9]_N|*qW]r@nLjUTM8*L]W~K3{=@2hV0T?i.DVp70L7E7%aaX2s]!');
-define('NONCE_SALT',       '#@Lp;/e|?P,.Jq.CDZ%P]sC(Nk^?Gp%rp!J)@$nzZ&lP|w2;^iU~~?y:ugm!VSTa');
+define('LOGGED_IN_SALT', 'G<A8.@AaXJ%9]_N|*qW]r@nLjUTM8*L]W~K3{=@2hV0T?i.DVp70L7E7%aaX2s]!');
+define('NONCE_SALT', '#@Lp;/e|?P,.Jq.CDZ%P]sC(Nk^?Gp%rp!J)@$nzZ&lP|w2;^iU~~?y:ugm!VSTa');
 $table_prefix = 'wp_';
-
-# Va permet de fonctionnalites de debug
 define( 'WP_DEBUG', false);
-
-# Vont permettre de rooter/afficher le index.php
-if ( ! defined( 'ABSPATH' ) ) {
-        define( 'ABSPATH', __DIR__ . '/' );
+if (!defined('ABSPATH')){
+	define('ABSPATH', __DIR__ . '/');
 }
-
 require_once ABSPATH . 'wp-settings.php';

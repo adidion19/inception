@@ -6,7 +6,7 @@ if [ $? -ne 0 ]; then
 
 	# Il est necessaire d'attendre que la base de donnee soit bien accessible, mysql lance
 	while ! mysqladmin ping -h "$MARIADB_HOST" --silent; do
-		sleep 1
+	sleep 1
 	done
 
 	eval "echo \"$(cat /tmp/create_db.sql)\"" | mariadb
