@@ -1,15 +1,16 @@
 cat .setup 2> /dev/null
 if [ $? -ne 0 ]; then
-	# https://dev.mysql.com/doc/refman/8.0/en/mysqld-safe.html
-	# Le & va etre utilise pour effectuer une "modification sur le serveur MySQL" - mysql driver avec des options
+	# modification de la DB mysql
 	usr/bin/mysqld_safe --datadir=/var/lib/mysql &
 
-	# Il est necessaire d'attendre que la base de donnee soit bien accessible, mysql lance
+	# ping pour attendre que la DB soit accessible
 	while ! mysqladmin ping -h "$MARIADB_HOST" --silent; do
 	sleep 1
 	done
 
+	#creation de la DB avec mariadb
 	eval "echo \"$(cat /tmp/create_db.sql)\"" | mariadb
 	touch .setup
 fi
+#lancement de la DB mysql
 usr/bin/mysqld_safe --datadir=/var/lib/mysql
