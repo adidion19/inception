@@ -8,8 +8,6 @@ all :	build
 		cd srcs && sudo docker-compose up -d
 build :
 	cd srcs && sudo docker-compose build
-stop :
-	docker-compose -f srcs/docker-compose.yml down -v
 clean :
 	cd srcs/ && sudo docker-compose down -v --rmi all --remove-orphans
 fclean	:	clean
