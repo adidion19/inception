@@ -6,7 +6,7 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 15:07:08 by adidion           #+#    #+#              #
-#    Updated: 2022/06/01 16:27:33 by adidion          ###   ########.fr        #
+#    Updated: 2022/06/01 17:06:12 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,4 +21,4 @@ RUN openssl req -x509 -nodes \
 RUN mkdir -p /var/run/nginx
 COPY tools/nginx.conf /etc/nginx/http.d/default.conf
 EXPOSE 443
-CMD	nginx -g "daemon off;"
+CMD	[ "nginx", "-g", "daemon off;" ]
