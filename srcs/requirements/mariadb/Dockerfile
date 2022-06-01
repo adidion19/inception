@@ -6,17 +6,17 @@
 #    By: adidion <adidion@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:21:40 by adidion           #+#    #+#              #
-#    Updated: 2022/06/01 11:59:35 by adidion          ###   ########.fr        #
+#    Updated: 2022/06/01 13:10:32 by adidion          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.14
 RUN apk update
-RUN apk add --update --no-cache --quiet vim mariadb-client mariadb
+RUN apk add --update --no-cache --quiet mariadb mariadb-client vim
 RUN mkdir -p /var/lib/mysqld /run/mysqld
 COPY ./tools/create_db.sql /tmp/create_db.sql
 COPY ./tools/entrypoint.sh ./
-COPY ./tools/my.cnf /etc/my.cnf.d/
+COPY ./tools/mariadb-server.cnf /etc/my.cnf.d/
 RUN chmod +x ./entrypoint.sh
 RUN mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal
 RUN chown -R mysql:mysql /var/lib/mysql
